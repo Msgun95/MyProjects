@@ -16,10 +16,14 @@ import java.util.stream.Collectors;
 public class Main {
 
      static Employee[] employees = new Employee[]{
-             new Employee(1L, "Daniel", "Agar", LocalDate.of(2018, 01, 17), 842,74, 105945.50 ),
-             new Employee(2L, "Benard", "Shaw", LocalDate.of(2019, 04, 03), 842,74,  197750.00 ),
-             new Employee(3L, "Carly", "Agar", LocalDate.of(2019, 04, 03), 842,74,842842.00  ),
-             new Employee(4L, "Wesley", "Schneider", LocalDate.of(2019, 05, 02), 842,74,500.00  )
+             new Employee(1L, "Daniel", "Agar", LocalDate.of(2018, 01, 17), 842,74, 105945.50
+                      ,"EX1089", LocalDate.of(2023,1,17), 100.00),
+             new Employee(2L, "Benard", "Shaw", LocalDate.of(2019, 04, 03), 842,74,  197750.00
+                      ,null, null, null),
+             new Employee(3L, "Carly", "Agar", LocalDate.of(2019, 04, 03), 842,74,842842.00
+                     ,"SM2307", LocalDate.of(2019,11,4), 1555.50),
+             new Employee(4L, "Wesley", "Schneider", LocalDate.of(2019, 05, 02), 842,74,500.00
+                   ,null, null, null)
 
 
              //     employees.get().setPensionPlan(new PensionPlan("EX1089", LocalDate.of(2018, 01, 17), 100.00)),
@@ -38,8 +42,8 @@ public class Main {
     public static void main(String[] args) {
 
 
-        employees[0].setPensionplan(new PensionPlan("EX1089", LocalDate.of(2018, 01, 17), 100.00));
-       employees[2].setPensionplan(new PensionPlan("SM2307", LocalDate.of(2019, 11, 04), 555.50));
+//        employees[0].setPensionplan(new PensionPlan("EX1089", LocalDate.of(2018, 01, 17), 100.00));
+//       employees[2].setPensionplan(new PensionPlan("SM2307", LocalDate.of(2019, 11, 04), 555.50));
 
 
         printEmployeesInJSON(employees);
@@ -51,7 +55,8 @@ public class Main {
             if(employees.length > 0) {
                 // Sort by product's name in ascending order
                 var sortedemployees = Arrays.stream(employees)
-                        .sorted(Comparator.comparing(Employee::getLastname).thenComparing(Employee::getYearlySalary).reversed())
+                        .sorted(Comparator.comparing(Employee::getLastname)
+                                .thenComparing(Employee::getYearlySalary, Comparator.reverseOrder()))
                         .toList();
                 // Print in JSON format
               //  System.out.println("Printed in JSON Format");

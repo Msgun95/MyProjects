@@ -9,19 +9,24 @@ private String firstname;
 private String lastname;
 private LocalDate employmentDate;
 private Double yearlySalary;
-private PensionPlan pensionplan = new PensionPlan();
+private PensionPlan pensionPlan = new PensionPlan();
 
 
 
 public Employee(long l, String string, String string2, LocalDate localDate, int i, double d) {
 }
-public Employee(Long employeeId, String firstname, String lastname, LocalDate employmentDate, int i, int j, Double yearlySalary) {
+public Employee(Long employeeId, String firstname, String lastname, LocalDate employmentDate, int i, int j,
+                Double yearlySalary,
+                String planReferenceNumber, LocalDate enrollmentDate,
+                Double monthlyContribution) {
     this.employeeId = employeeId;
     this.firstname = firstname;
     this.lastname = lastname;
     this.employmentDate = employmentDate;
     this.yearlySalary = yearlySalary;
+    pensionPlan = (planReferenceNumber == null) ? null : new PensionPlan(planReferenceNumber, enrollmentDate, monthlyContribution);
 }
+
 public Long getEmployeeId() {
     return employeeId;
 }
@@ -64,10 +69,10 @@ public void setYearlySalary(Double yearlySalary) {
 
 
 public PensionPlan getPensionplan() {
-    return pensionplan;
+    return pensionPlan;
 }
 public void setPensionplan(PensionPlan pensionplan) {
-    this.pensionplan = pensionplan;
+    this.pensionPlan = pensionPlan;
 }
 
 
@@ -92,7 +97,7 @@ public void setPensionplan(PensionPlan pensionplan) {
                 ", lastname='" + lastname + '\'' +
                 ", employmentDate=" + employmentDate +
                 ", yearlySalary=" + yearlySalary +
-                ", pensionplan=" + pensionplan +
+                ", pensionPlan=" + pensionPlan +
                 '}';
     }
 
