@@ -11,17 +11,18 @@ import java.util.List;
 @AllArgsConstructor
 @NoArgsConstructor
 
-public class ItemList {
+public class ShoppingCart {
 
     @Id
     @GeneratedValue
     private Integer itemlistId;
     private Integer discount;
 
-    @JoinColumn(name = "itemlistId")
-    @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
-    private List<Item> itemsList;
-
-
+//    @JoinColumn(name = "itemlistId")
+//    @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+//    private List<Item> itemsList;
+//
+//   @OneToOne
+//    private Customer customer;
 
 }

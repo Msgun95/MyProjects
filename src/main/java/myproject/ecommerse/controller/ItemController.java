@@ -2,9 +2,7 @@ package myproject.ecommerse.controller;
 
 import lombok.RequiredArgsConstructor;
 import myproject.ecommerse.dto.ItemDTO;
-import myproject.ecommerse.model.Item;
 import myproject.ecommerse.service.IItemsService;
-import org.springframework.data.mongodb.repository.Update;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -31,8 +29,8 @@ public class ItemController {
     public ResponseEntity<List<ItemDTO>> getAllItems() {
         return ResponseEntity.ok(iItemsService.getAllItems());
     }
-    @DeleteMapping
-    public void deleteItem(int id){
+    @DeleteMapping("/{id}")
+    public void deleteItem(@PathVariable int id){
         iItemsService.deleteItem(id);
     }
 

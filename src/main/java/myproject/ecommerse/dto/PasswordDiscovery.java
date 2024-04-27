@@ -1,4 +1,4 @@
-package Bright.AuthenticationService.dto;
+package myproject.ecommerse.dto;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;

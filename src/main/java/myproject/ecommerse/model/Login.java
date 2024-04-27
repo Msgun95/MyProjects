@@ -1,4 +1,4 @@
-package Bright.AuthenticationService.entity;
+package myproject.ecommerse.model;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -12,5 +12,5 @@ import lombok.NoArgsConstructor;
 public class Login {
 
   private String email;
-  String password;
+  private String password;
 }

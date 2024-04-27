@@ -20,7 +20,8 @@ public class Order {
     @Id
     @GeneratedValue
     private Integer orderId;
-    private LocalDateTime localDateTime;
+    private LocalDateTime createdAt;
+    private Double totalPrice;
 
 
     @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER)

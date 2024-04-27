@@ -1,16 +1,13 @@
-package Bright.AuthenticationService.service;
+package myproject.ecommerse.service.imp;
 
 
-import Bright.AuthenticationService.entity.AuthenticationResponse;
-import Bright.AuthenticationService.entity.Login;
-import Bright.AuthenticationService.dto.RegisterRequest;
-import Bright.AuthenticationService.entity.User;
-import Bright.AuthenticationService.repository.TokenRepository;
-import Bright.AuthenticationService.repository.UserRepository;
-import Bright.AuthenticationService.entity.Token;
-import Bright.AuthenticationService.entity.TokenType;
+
 import lombok.RequiredArgsConstructor;
-
+import myproject.ecommerse.dto.CustomerDTO;
+import myproject.ecommerse.enum1.TokenType;
+import myproject.ecommerse.model.*;
+import myproject.ecommerse.repository.CustomerRepo;
+import myproject.ecommerse.repository.TokenRepository;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.crypto.password.PasswordEncoder;
@@ -19,21 +16,21 @@ import org.springframework.stereotype.Service;
 @Service
 @RequiredArgsConstructor
 public class AuthenticationService {
-  private final UserRepository repository;
+  private final CustomerRepo customerRepo;
 private final TokenRepository tokenRepository;
   private final PasswordEncoder passwordEncoder;
   private final JwtService jwtService;
   private final AuthenticationManager authenticationManager;
  //public AuthenticationResponse register(RegisterRequest request) {
-public String register(RegisterRequest request) {
-    var user = User.builder()
+public String register(CustomerDTO request) {
+    var customer = Customer.builder()
         .firstName(request.getFirstName())
         .lastName(request.getLastName())
         .email(request.getEmail())
         .password(passwordEncoder.encode(request.getPassword()))
         .role(request.getRole())
         .build();
-    var savedUser = repository.save(user);
+    var savecustomer = customerRepo.save(customer);
    return  "You resgistered Successfully! Thanks Alot! " + request.getFirstName();
 //    var jwtToken = jwtService.generateToken(user);
 //    var refreshToken = jwtService.generateRefreshToken(user);
@@ -53,7 +50,7 @@ public String register(RegisterRequest request) {
             login.getPassword()
         )
     );
-    var user = repository.findByEmail(login.getEmail())
+    var user = customerRepo.findByEmail(login.getEmail())
         .orElseThrow();
     var jwtToken = jwtService.generateToken(user);
     var refreshToken = jwtService.generateRefreshToken(user);
@@ -61,15 +58,15 @@ public String register(RegisterRequest request) {
     saveUserToken(user, jwtToken);
     return AuthenticationResponse.builder()
         .accessToken(jwtToken)
-            .refreshToken(refreshToken)
+          //  .refreshToken(refreshToken)
         .build();
   }
 
 
 
-  private void saveUserToken(User user, String jwtToken) {
+  private void saveUserToken(Customer customer, String jwtToken) {
     var token = Token.builder()
-        .user(user)
+        .customer(customer)
         .token(jwtToken)
         .tokenType(TokenType.BEARER)
         .expired(false)
@@ -79,7 +76,7 @@ public String register(RegisterRequest request) {
    // tokenRepository.save(token);
   }
 
-    public  void logout(String token){
+   public  void logout(String token){
         tokenRepository.deleteByToken(token);
     }
 

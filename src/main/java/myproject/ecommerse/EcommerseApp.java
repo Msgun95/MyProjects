@@ -7,10 +7,10 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 
 @SpringBootApplication
-public class Ecommerse {
+public class EcommerseApp {
 
 	public static void main(String[] args) {
-		SpringApplication.run(Ecommerse.class, args);
+		SpringApplication.run(EcommerseApp.class, args);
 	}
 
 }

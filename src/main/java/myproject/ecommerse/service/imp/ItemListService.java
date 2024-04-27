@@ -1,6 +1,6 @@
 package myproject.ecommerse.service.imp;
 
-import myproject.ecommerse.model.ItemList;
+import myproject.ecommerse.model.ShoppingCart;
 import myproject.ecommerse.service.IItemsListService;
 
 import java.util.List;
@@ -8,17 +8,17 @@ import java.util.List;
 public class ItemListService implements IItemsListService {
 
     @Override
-    public ItemList addItemList(ItemList itemList) {
+    public ShoppingCart addItemList(ShoppingCart shoppingCart) {
         return null;
     }
 
     @Override
-    public List<ItemList> getAllItemLists() {
+    public List<ShoppingCart> getAllItemLists() {
         return null;
     }
 
     @Override
-    public ItemList getItemListById(int id) {
+    public ShoppingCart getItemListById(int id) {
         return null;
     }
 

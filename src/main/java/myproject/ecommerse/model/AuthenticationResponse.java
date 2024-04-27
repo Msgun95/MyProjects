@@ -1,4 +1,4 @@
-package Bright.AuthenticationService.entity;
+package myproject.ecommerse.model;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.AllArgsConstructor;
@@ -12,8 +12,8 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 public class AuthenticationResponse {
 
-  @JsonProperty("access_token")
+ // @JsonProperty("access_token")
   private String accessToken;
-  @JsonProperty("refresh_token")
-  private String refreshToken;
+ // @JsonProperty("refresh_token")
+ // private String refreshToken;
 }

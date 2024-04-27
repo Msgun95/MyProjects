@@ -1,4 +1,4 @@
-package Bright.AuthenticationService.entity;
+package myproject.ecommerse.model;
 
 
 import jakarta.persistence.*;
@@ -6,6 +6,7 @@ import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import myproject.ecommerse.enum1.TokenType;
 
 
 @Data
@@ -29,9 +30,6 @@ public class Token {
 
   public boolean expired;
 
-  @ManyToOne(fetch = FetchType.LAZY)
-  @JoinColumn(name = "user_id")
-  public User user;
 
   @ManyToOne(fetch = FetchType.LAZY)
   @JoinColumn(name = "customer_id")

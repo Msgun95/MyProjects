@@ -80,25 +80,49 @@ public class CustomerService implements ICustomerService {
 
         return modelMapper.map(customerRepo.save(customer), CustomerDTO.class);
     }
-//
-//
+
+
 //    public CustomerDTO addCustomer(CustomerDTO customerDTO) {
+//        // Mapping customerDTO to Customer entity
 //        Customer customer = modelMapper.map(customerDTO, Customer.class);
 //
+//        // Check if only customer is to be saved
+//        if (customerDTO.getAddressList() == null || customerDTO.getAddressList().isEmpty()) {
+//            // Save only the customer and return
+//            return modelMapper.map(customerRepo.save(customer), CustomerDTO.class);
+//        }
+//
+//        // Saving customer and addresses together
 //        List<Address> addressList = customerDTO.getAddressList().stream()
 //                .map(addressDTO -> {
+//                    // Check if addressDTO has an ID
 //                    if (addressDTO.getAddressId() != null) {
+//                        // If ID exists, attempt to fetch address from repository
 //                        return addressRepo.findById(addressDTO.getAddressId()).orElse(null);
 //                    } else {
+//                        // If ID is null, map addressDTO to Address entity and save it
 //                        return addressRepo.save(modelMapper.map(addressDTO, Address.class));
-//                    }})
+//                    }
+//                })
+//                // Filter out null addresses (addresses that couldn't be found in the repository)
 //                .filter(Objects::nonNull)
 //                .collect(Collectors.toList());
 //
+//        // If any of the requested address IDs could not be found, return null
+//        if (addressList.size() != customerDTO.getAddressList().size()) {
+//            return null; // Or throw an exception indicating some addresses were not found
+//        }
+//
+//        // Set the address list to the customer entity
 //        customer.setAddressList(addressList);
 //
+//        // Save the customer with addresses and return
 //        return modelMapper.map(customerRepo.save(customer), CustomerDTO.class);
 //    }
+
+
+
+
 
 
     @Override

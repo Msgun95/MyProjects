@@ -1,13 +1,13 @@
-package Bright.AuthenticationService.controller;
+package myproject.ecommerse.controller;
 
-import Bright.AuthenticationService.entity.AuthenticationResponse;
-import Bright.AuthenticationService.entity.Login;
-import Bright.AuthenticationService.dto.RegisterRequest;
-import Bright.AuthenticationService.service.AuthenticationService;
+
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
-
+import myproject.ecommerse.dto.CustomerDTO;
+import myproject.ecommerse.model.AuthenticationResponse;
+import myproject.ecommerse.model.Login;
+import myproject.ecommerse.service.imp.AuthenticationService;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -21,10 +21,10 @@ public class AuthenticationController {
 
   private final AuthenticationService service;
 
-  @PostMapping("/registeruser")
+  @PostMapping("/register")
  //public ResponseEntity<AuthenticationResponse> register(
  public ResponseEntity<String> register(
-     @Valid @RequestBody RegisterRequest request
+     @Valid @RequestBody CustomerDTO request
   ) {
     return ResponseEntity.ok(service.register(request));
    //return ResponseEntity.ok(service.register(request));
@@ -34,7 +34,7 @@ public class AuthenticationController {
   }
 
 
-  @PostMapping("/loginuser")
+  @PostMapping("/login")
   public ResponseEntity<AuthenticationResponse> authenticate(
       @RequestBody Login request
   ) {

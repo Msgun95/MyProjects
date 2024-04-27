@@ -19,9 +19,11 @@ public class Item {
     private String name;
     private String description;
     private Double price;
+    private Integer qauntityAvailable;
 
-    @JoinColumn(name = "itemId")
-    @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+
+    @OneToMany(mappedBy = "item",
+            cascade = CascadeType.ALL, fetch = FetchType.EAGER)
     private List<Review> reviews;
 
 

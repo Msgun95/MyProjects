@@ -1,8 +1,6 @@
 package myproject.ecommerse.model;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -21,4 +19,11 @@ public class Review {
     private String description;
     private Integer numberofStars;
     private LocalDate date;
+
+    @ManyToOne(  cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+    @JoinColumn(name = "customerId")
+    private Customer customer;
+    @JoinColumn(name = "itemId")
+    @ManyToOne(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+    private Item item;
 }

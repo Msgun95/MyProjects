@@ -1,4 +1,4 @@
-package Bright.AuthenticationService.service;
+package myproject.ecommerse.service.imp;
 
 import io.jsonwebtoken.Claims;
 import io.jsonwebtoken.Jwts;

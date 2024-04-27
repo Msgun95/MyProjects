@@ -1,4 +1,4 @@
-package Bright.AuthenticationService.config;
+package myproject.ecommerse.Config;
 
 import lombok.RequiredArgsConstructor;
 import org.springframework.context.annotation.Bean;
@@ -13,9 +13,10 @@ import org.springframework.security.web.SecurityFilterChain;
 import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
 
 
-import static Bright.AuthenticationService.entity.Role.ADMIN;
-import static Bright.AuthenticationService.entity.Role.USER;
+import static myproject.ecommerse.enum1.Role.ADMIN;
+import static myproject.ecommerse.enum1.Role.CUSTOMER;
 import static org.springframework.security.config.http.SessionCreationPolicy.STATELESS;
+//import static sun.net.ftp.FtpDirEntry.Permission.USER;
 
 @Configuration
 @EnableWebSecurity
@@ -34,7 +35,7 @@ public class SecurityConfiguration {
             "/swagger-ui/**",
             "/webjars/**",
             "/swagger-ui.html",
-         //  " /api/v1/auth/login1"
+          //  " /api/v1/auth/login"
           //  "/api/v1/auth/register",
           //  "/api/customers/register"
 
@@ -52,8 +53,9 @@ public class SecurityConfiguration {
                 .authorizeHttpRequests(req ->
                         req.requestMatchers(WHITE_LIST_URL)
                                 .permitAll()
-                                .requestMatchers("/api/v1/auth/**").hasAnyRole(USER.name(), ADMIN.name())
-//                                .requestMatchers("/api/customers/**").hasAnyRole(USER.name())
+                                .requestMatchers("/api/v1/auth/**").hasAnyRole(CUSTOMER.name(), ADMIN.name())
+                                .requestMatchers("/api/customers/**").hasAnyRole(CUSTOMER.name())
+                                .requestMatchers("/address/**").hasAnyRole(CUSTOMER.name())
                                // .requestMatchers(GET, "/api/v1/auth/**").hasAnyAuthority(USER.name()) //, MANAGER_READ.name())
 //                                .requestMatchers(POST, "/api/v1/management/**").hasAnyAuthority(ADMIN_CREATE.name(), MANAGER_CREATE.name())
 //                                .requestMatchers(PUT, "/api/v1/management/**").hasAnyAuthority(ADMIN_UPDATE.name(), MANAGER_UPDATE.name())
